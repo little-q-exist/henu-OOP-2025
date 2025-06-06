@@ -1,8 +1,10 @@
 import javax.swing.JFrame;
 
 import Scene.MenuScene;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Game extends JFrame {
+public class Game extends JFrame implements KeyListener {
     int width = 1440;
     int height = 900;
     final int FPS = 60;
