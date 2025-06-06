@@ -1,8 +1,6 @@
 import javax.swing.JFrame;
 
-import Scene.GameScene;
 import Scene.MenuScene;
-import Scene.SelectorScene;
 
 public class Game extends JFrame {
     int width = 1440;
@@ -38,8 +36,21 @@ public class Game extends JFrame {
 
         while (true) {
             long currentTime = System.currentTimeMillis();
-            repaint();
+            long deltaTime = (currentTime - lastTime);
+            lastTime = currentTime;
 
+            sceneManager.onUpdate(deltaTime);
+            sceneManager.onDraw();
+
+            if (deltaTime < 1000 / FPS) {
+                try {
+                    Thread.sleep((1000 / FPS) - deltaTime);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt(); // »Ö¸´ÖÐ¶Ï×´Ì¬
+                    System.err.println("Game loop interrupted: " + e.getMessage());
+                    break;
+                }
+            }
         }
     }
 }

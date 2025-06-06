@@ -7,7 +7,7 @@ public class SelectorScene implements Scene {
     }
 
     @Override
-    public void onUpdate() {
+    public void onUpdate(long deltaTime) {
     }
 
     @Override

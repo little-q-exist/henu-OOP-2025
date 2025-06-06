@@ -7,7 +7,8 @@ public class MenuScene implements Scene {
     }
 
     @Override
-    public void onUpdate() {
+    public void onUpdate(long deltaTime) {
+        System.out.println("Rendering...");
     }
 
     @Override

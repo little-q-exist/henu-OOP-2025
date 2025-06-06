@@ -3,7 +3,7 @@ package Scene;
 public interface Scene {
     void onEnter();
 
-    void onUpdate();
+    void onUpdate(long deltaTime);
 
     void onDraw();
 

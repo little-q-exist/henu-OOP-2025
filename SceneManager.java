@@ -14,11 +14,15 @@ public class SceneManager {
         currentScene.onEnter();
     }
 
-    public void onUpdate() {
-
+    public void onUpdate(long deltaTime) {
+        currentScene.onUpdate(deltaTime);
     }
 
     public void onDraw() {
+        currentScene.onDraw();
+    }
 
+    public void onInput() {
+        currentScene.onInput();
     }
 }
