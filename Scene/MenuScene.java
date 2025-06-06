@@ -1,5 +1,7 @@
 package Scene;
 
+import java.awt.event.KeyEvent;
+
 public class MenuScene implements Scene {
 
     @Override
@@ -23,4 +25,13 @@ public class MenuScene implements Scene {
     public void onExit() {
     }
 
+    @Override
+    public void handleKeyPress(KeyEvent e) {
+
+    }
+
+    @Override
+    public void handleKeyRelease(KeyEvent e) {
+
+    }
 }

@@ -1,11 +1,15 @@
 import Scene.Scene;
 
 public class SceneManager {
-    Scene currentScene = null;
+    private Scene currentScene = null;
 
     public void setCurrentScene(Scene scene) {
         currentScene = scene;
         currentScene.onEnter();
+    }
+
+    public Scene getCurrentScene() {
+        return currentScene;
     }
 
     public void switchTo(Scene scene) {

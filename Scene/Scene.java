@@ -1,5 +1,7 @@
 package Scene;
 
+import java.awt.event.KeyEvent;
+
 public interface Scene {
     void onEnter();
 
@@ -10,4 +12,9 @@ public interface Scene {
     void onInput();
 
     void onExit();
+
+    void handleKeyPress(KeyEvent e);
+
+    void handleKeyRelease(KeyEvent e);
+
 }

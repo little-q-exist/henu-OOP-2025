@@ -1,6 +1,8 @@
 import javax.swing.JFrame;
 
 import Scene.MenuScene;
+import Scene.Scene;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -10,7 +12,7 @@ public class Game extends JFrame implements KeyListener {
     final int FPS = 60;
     final String title = "¥Û”„≥‘–°”„";
 
-    SceneManager sceneManager;
+    private SceneManager sceneManager;
 
     Game() {
         sceneManager = new SceneManager();
@@ -24,6 +26,26 @@ public class Game extends JFrame implements KeyListener {
 
     int getFPS() {
         return FPS;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        Scene currentScene = sceneManager.getCurrentScene();
+        if (currentScene != null) {
+            currentScene.handleKeyPress(e);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        Scene currentScene = sceneManager.getCurrentScene();
+        if (currentScene != null) {
+            currentScene.handleKeyRelease(e);
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
     }
 
     public void launch() {
