@@ -1,17 +1,29 @@
 import javax.swing.JFrame;
 
+import Scene.GameScene;
+import Scene.MenuScene;
+import Scene.SelectorScene;
+
 public class Game extends JFrame {
     int width = 1440;
     int height = 900;
     final int FPS = 60;
     final String title = "¥Û”„≥‘–°”„";
 
-    Game() {
+    SceneManager sceneManager;
 
+    Game() {
+        sceneManager = new SceneManager();
+
+        sceneManager.setCurrentScene(new MenuScene());
     }
 
     String gettitle() {
         return title;
+    }
+
+    int getFPS() {
+        return FPS;
     }
 
     public void launch() {
@@ -22,8 +34,10 @@ public class Game extends JFrame {
         this.setResizable(false);
         this.setTitle(gettitle());
 
-        while (true) {
+        long lastTime = System.currentTimeMillis();
 
+        while (true) {
+            long currentTime = System.currentTimeMillis();
             repaint();
 
         }
