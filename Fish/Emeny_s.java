@@ -12,8 +12,4 @@ public class Emeny_s extends Emeny {
     void onUpdate() {
     }
 
-    @Override
-    void onInput(KeyEvent e) {
-    }
-
 }
