@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 public class Player extends Fish {
-    private Point position;
+    private Point position = new Point(100, 100);
     private Point size;
     private final int MIN_SPEED = 10;
     private final int MAX_SPEED = 20;
@@ -25,6 +25,16 @@ public class Player extends Fish {
 
     @Override
     public void onInput(KeyEvent e) {
+        int KeyID = e.getID();
+        if (KeyID == KeyEvent.KEY_PRESSED) {
+            handleKeyPress(e);
+        } else if (KeyID == KeyEvent.KEY_RELEASED) {
+            handleKeyRelease(e);
+        }
+
+    }
+
+    void handleKeyPress(KeyEvent e) {
         int KeyCode = e.getKeyCode();
         switch (KeyCode) {
             case KeyEvent.VK_UP:
@@ -44,6 +54,26 @@ public class Player extends Fish {
         }
     }
 
+    void handleKeyRelease(KeyEvent e) {
+        int KeyCode = e.getKeyCode();
+        switch (KeyCode) {
+            case KeyEvent.VK_UP:
+                up_key_down = false;
+                break;
+            case KeyEvent.VK_DOWN:
+                down_key_down = false;
+                break;
+            case KeyEvent.VK_LEFT:
+                left_key_down = false;
+                break;
+            case KeyEvent.VK_RIGHT:
+                right_key_down = false;
+                break;
+            default:
+                break;
+        }
+    }
+
     @Override
     public void onDraw() {
 
@@ -51,6 +81,6 @@ public class Player extends Fish {
 
     @Override
     public void onUpdate() {
-
+        position.x += ((int) right_key_down - (int) left_key_down) * speed;
     }
 }
