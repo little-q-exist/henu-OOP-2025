@@ -15,20 +15,30 @@ public class SceneManager {
     }
 
     public void switchTo(Scene scene) {
-        currentScene.onExit();
+        if (currentScene != null) {
+            currentScene.onExit();
+        }
         currentScene = scene;
         currentScene.onEnter();
     }
 
     public void onUpdate(long deltaTime) {
+        if (currentScene == null)
+            return;
+
         currentScene.onUpdate(deltaTime);
     }
 
     public void onDraw() {
+        if (currentScene == null)
+            return;
         currentScene.onDraw();
     }
 
     public void onInput(KeyEvent e) {
+        if (currentScene == null)
+            return;
+
         currentScene.onInput(e);
     }
 }

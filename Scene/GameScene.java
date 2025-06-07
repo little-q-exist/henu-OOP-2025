@@ -27,7 +27,17 @@ public class GameScene implements Scene {
 
     @Override
     public void handleKeyPress(KeyEvent e) {
-
+        int KeyCode = e.getKeyCode();
+        switch (KeyCode) {
+            case KeyEvent.VK_Q:
+                debug = !debug;
+                break;
+            case KeyEvent.VK_SPACE:
+                pause = !pause;
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

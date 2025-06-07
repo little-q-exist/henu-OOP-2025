@@ -1,10 +1,5 @@
 import javax.swing.JFrame;
 
-import Scene.GameScene;
-import Scene.MenuScene;
-import Scene.Scene;
-import Scene.SelectorScene;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,14 +10,8 @@ public class Game extends JFrame implements KeyListener {
     final String title = "¥Û”„≥‘–°”„";
 
     private SceneManager sceneManager;
-    private Scene menuScene;
-    private Scene selectorScene;
-    private Scene gameScene;
 
     Game() {
-        menuScene = new MenuScene();
-        selectorScene = new SelectorScene();
-        gameScene = new GameScene();
         sceneManager = new SceneManager();
     }
 
