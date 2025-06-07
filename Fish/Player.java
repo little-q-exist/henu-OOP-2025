@@ -10,13 +10,14 @@ public class Player {
     private int PLAYER_HEIGHT;
     private final int MIN_SPEED = 10;
     private final int MAX_SPEED = 20;
-    private int speed;
+    private int speed = MAX_SPEED;
     private int up_key_down = 0;
     private int down_key_down = 0;
     private int left_key_down = 0;
     private int right_key_down = 0;
     int facing_right = 1;
     private boolean isDead = false;
+    private int score = 5;
 
     public boolean isDead() {
         return isDead;
@@ -98,7 +99,15 @@ public class Player {
         position.y += (down_key_down - up_key_down) * speed;
         for (Emeny emeny : emenies) {
             if (emeny.checkCollide(this)) {
-                isDead = true;
+                if (score < emeny.getScore()) {
+                    isDead = true;
+
+                } else {
+                    score++;
+                    if (speed > MIN_SPEED) {
+                        speed--;
+                    }
+                }
             }
         }
     }

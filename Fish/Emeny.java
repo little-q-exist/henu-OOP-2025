@@ -6,6 +6,8 @@ public abstract class Emeny {
     private Point position;
     private int WIDTH;
     private int HEIGHT;
+    private int score;
+    boolean facing_right = true;
 
     abstract void onDraw();
 
@@ -13,6 +15,14 @@ public abstract class Emeny {
 
     public Point getPosition() {
         return position;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public void setPosition(Point position) {

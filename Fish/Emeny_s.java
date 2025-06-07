@@ -12,6 +12,9 @@ public class Emeny_s extends Emeny {
 
     @Override
     void onUpdate() {
+        Point currentposition = getPosition();
+        currentposition.x += (facing_right ? 1 : -1) * SPEED;
+        setPosition(currentposition);
     }
 
 }
