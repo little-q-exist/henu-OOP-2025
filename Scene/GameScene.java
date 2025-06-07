@@ -1,8 +1,11 @@
 package Scene;
 
+import java.util.List;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import Fish.Player;
+import Fish.Emeny;
 
 public class GameScene implements Scene {
 
@@ -12,6 +15,7 @@ public class GameScene implements Scene {
     private boolean gameOver = false;
 
     private Player player;
+    private ArrayList<Emeny> emenies = new ArrayList<>();
 
     @Override
     public void onEnter() {
@@ -22,6 +26,7 @@ public class GameScene implements Scene {
 
     @Override
     public void onUpdate(long deltaTime) {
+        player.onUpdate(emenies);
         if (player.isDead()) {
             gameOver = true;
         }

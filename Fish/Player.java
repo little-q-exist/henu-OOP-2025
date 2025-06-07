@@ -2,10 +2,12 @@ package Fish;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class Player {
     private Point position = new Point(100, 100);
-    private Point size;
+    private int PLAYER_WIDTH;
+    private int PLAYER_HEIGHT;
     private final int MIN_SPEED = 10;
     private final int MAX_SPEED = 20;
     private int speed;
@@ -24,8 +26,12 @@ public class Player {
         return position;
     }
 
-    public Point getSize() {
-        return size;
+    public int getPLAYER_WIDTH() {
+        return PLAYER_WIDTH;
+    }
+
+    public int getPLAYER_HEIGHT() {
+        return PLAYER_HEIGHT;
     }
 
     public void onInput(KeyEvent e) {
@@ -79,12 +85,22 @@ public class Player {
     }
 
     public void onDraw() {
-
+        int dir_x = (right_key_down - left_key_down);
+        if (dir_x > 0) {
+            facing_right = 1;
+        } else if (dir_x < 0) {
+            facing_right = 0;
+        }
     }
 
-    public void onUpdate() {
-        int direction = right_key_down - left_key_down;
+    public void onUpdate(ArrayList<Emeny> emenies) {
         position.x += (right_key_down - left_key_down) * speed;
         position.y += (down_key_down - up_key_down) * speed;
+        for (Emeny emeny : emenies) {
+            if (emeny.checkCollide(this)) {
+                isDead = true;
+            }
+        }
     }
+
 }
