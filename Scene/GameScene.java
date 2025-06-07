@@ -2,10 +2,14 @@ package Scene;
 
 import java.awt.event.KeyEvent;
 
+import Fish.Player;
+
 public class GameScene implements Scene {
 
     private boolean debug;
     private boolean pause;
+
+    private Player player;
 
     @Override
     public void onEnter() {
@@ -37,6 +41,10 @@ public class GameScene implements Scene {
                 break;
             default:
                 break;
+        }
+        if (KeyCode == KeyEvent.VK_UP || KeyCode == KeyEvent.VK_DOWN || KeyCode == KeyEvent.VK_LEFT
+                || KeyCode == KeyEvent.VK_RIGHT) {
+            player.onInput(e);
         }
     }
 
