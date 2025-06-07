@@ -6,8 +6,10 @@ import Fish.Player;
 
 public class GameScene implements Scene {
 
+    private SceneManager sceneManager = new SceneManager();
     private boolean debug;
     private boolean pause;
+    private boolean gameOver = false;
 
     private Player player;
 
@@ -15,10 +17,17 @@ public class GameScene implements Scene {
     public void onEnter() {
         debug = false;
         pause = false;
+        gameOver = false;
     }
 
     @Override
     public void onUpdate(long deltaTime) {
+        if (player.isDead()) {
+            gameOver = true;
+        }
+        if (gameOver) {
+            sceneManager.switchTo(new MenuScene());
+        }
     }
 
     @Override
@@ -27,6 +36,8 @@ public class GameScene implements Scene {
 
     @Override
     public void onExit() {
+        debug = false;
+        pause = false;
     }
 
     @Override

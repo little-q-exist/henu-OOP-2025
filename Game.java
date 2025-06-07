@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 
+import Scene.SceneManager;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

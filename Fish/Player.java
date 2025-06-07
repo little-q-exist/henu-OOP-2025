@@ -9,11 +9,16 @@ public class Player extends Fish {
     private final int MIN_SPEED = 10;
     private final int MAX_SPEED = 20;
     private int speed;
-    private boolean up_key_down = false;
-    private boolean down_key_down = false;
-    private boolean left_key_down = false;
-    private boolean right_key_down = false;
-    boolean facing_right = true;
+    private int up_key_down = 0;
+    private int down_key_down = 0;
+    private int left_key_down = 0;
+    private int right_key_down = 0;
+    int facing_right = 1;
+    private boolean isDead = false;
+
+    public boolean isDead() {
+        return isDead;
+    }
 
     public Point getPosition() {
         return position;
@@ -38,16 +43,16 @@ public class Player extends Fish {
         int KeyCode = e.getKeyCode();
         switch (KeyCode) {
             case KeyEvent.VK_UP:
-                up_key_down = true;
+                up_key_down = 1;
                 break;
             case KeyEvent.VK_DOWN:
-                down_key_down = true;
+                down_key_down = 1;
                 break;
             case KeyEvent.VK_LEFT:
-                left_key_down = true;
+                left_key_down = 1;
                 break;
             case KeyEvent.VK_RIGHT:
-                right_key_down = true;
+                right_key_down = 1;
                 break;
             default:
                 break;
@@ -58,16 +63,16 @@ public class Player extends Fish {
         int KeyCode = e.getKeyCode();
         switch (KeyCode) {
             case KeyEvent.VK_UP:
-                up_key_down = false;
+                up_key_down = 0;
                 break;
             case KeyEvent.VK_DOWN:
-                down_key_down = false;
+                down_key_down = 0;
                 break;
             case KeyEvent.VK_LEFT:
-                left_key_down = false;
+                left_key_down = 0;
                 break;
             case KeyEvent.VK_RIGHT:
-                right_key_down = false;
+                right_key_down = 0;
                 break;
             default:
                 break;
@@ -81,6 +86,8 @@ public class Player extends Fish {
 
     @Override
     public void onUpdate() {
-        position.x += ((int) right_key_down - (int) left_key_down) * speed;
+        int direction = right_key_down - left_key_down;
+        position.x += (right_key_down - left_key_down) * speed;
+        position.y += (down_key_down - up_key_down) * speed;
     }
 }
