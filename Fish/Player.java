@@ -3,7 +3,7 @@ package Fish;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 
-public class Player extends Fish {
+public class Player {
     private Point position = new Point(100, 100);
     private Point size;
     private final int MIN_SPEED = 10;
@@ -28,7 +28,6 @@ public class Player extends Fish {
         return size;
     }
 
-    @Override
     public void onInput(KeyEvent e) {
         int KeyID = e.getID();
         if (KeyID == KeyEvent.KEY_PRESSED) {
@@ -79,12 +78,10 @@ public class Player extends Fish {
         }
     }
 
-    @Override
     public void onDraw() {
 
     }
 
-    @Override
     public void onUpdate() {
         int direction = right_key_down - left_key_down;
         position.x += (right_key_down - left_key_down) * speed;
