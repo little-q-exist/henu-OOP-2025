@@ -15,9 +15,9 @@ public class Game extends JFrame implements KeyListener {
     final String title = "¥Û”„≥‘–°”„";
 
     private SceneManager sceneManager;
-    private MenuScene menuScene;
-    private SelectorScene selectorScene;
-    private GameScene gameScene;
+    private Scene menuScene;
+    private Scene selectorScene;
+    private Scene gameScene;
 
     Game() {
         menuScene = new MenuScene();

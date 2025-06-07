@@ -18,10 +18,6 @@ public class MenuScene implements Scene {
     }
 
     @Override
-    public void onInput(KeyEvent e) {
-    }
-
-    @Override
     public void onExit() {
     }
 
