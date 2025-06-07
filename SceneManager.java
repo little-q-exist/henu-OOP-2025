@@ -1,5 +1,7 @@
 import Scene.Scene;
 
+import java.awt.event.KeyEvent;
+
 public class SceneManager {
     private Scene currentScene = null;
 
@@ -26,7 +28,7 @@ public class SceneManager {
         currentScene.onDraw();
     }
 
-    public void onInput() {
-        currentScene.onInput();
+    public void onInput(KeyEvent e) {
+        currentScene.onInput(e);
     }
 }

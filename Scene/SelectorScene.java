@@ -17,7 +17,7 @@ public class SelectorScene implements Scene {
     }
 
     @Override
-    public void onInput() {
+    public void onInput(KeyEvent e) {
     }
 
     @Override

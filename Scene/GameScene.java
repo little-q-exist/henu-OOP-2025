@@ -4,8 +4,13 @@ import java.awt.event.KeyEvent;
 
 public class GameScene implements Scene {
 
+    private boolean debug;
+    private boolean pause;
+
     @Override
     public void onEnter() {
+        debug = false;
+        pause = false;
     }
 
     @Override
@@ -17,7 +22,7 @@ public class GameScene implements Scene {
     }
 
     @Override
-    public void onInput() {
+    public void onInput(KeyEvent e) {
     }
 
     @Override
@@ -31,6 +36,5 @@ public class GameScene implements Scene {
 
     @Override
     public void handleKeyRelease(KeyEvent e) {
-
     }
 }

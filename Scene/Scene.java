@@ -9,7 +9,7 @@ public interface Scene {
 
     void onDraw();
 
-    void onInput();
+    void onInput(KeyEvent e);
 
     void onExit();
 
