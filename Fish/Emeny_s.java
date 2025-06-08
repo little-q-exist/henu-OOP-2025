@@ -6,6 +6,10 @@ public class Emeny_s extends Emeny {
 
     private final int SPEED = 10;
 
+    Emeny_s(int WINDOW_width, int WINDOW_height) {
+        super(WINDOW_width, WINDOW_height);
+    }
+
     @Override
     void onDraw() {
     }

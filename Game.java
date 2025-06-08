@@ -6,8 +6,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Game extends JFrame implements KeyListener {
-    int width = 1440;
-    int height = 900;
+    final int WINDOW_width = 1440;
+    final int WINDOW_height = 900;
     final int FPS = 60;
     final String title = "¥Û”„≥‘–°”„";
 
@@ -42,7 +42,7 @@ public class Game extends JFrame implements KeyListener {
     public void launch() {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
-        this.setSize(width, height);
+        this.setSize(WINDOW_width, WINDOW_height);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle(gettitle());

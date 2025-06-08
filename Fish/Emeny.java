@@ -1,13 +1,39 @@
 package Fish;
 
 import java.awt.Point;
+import java.util.Random;
 
 public abstract class Emeny {
     private Point position;
     private int WIDTH;
     private int HEIGHT;
     private int score;
-    boolean facing_right = true;
+    boolean facing_right;
+    private Random random = new Random();
+
+    enum spawPosition {
+        left,
+        right
+    }
+
+    Emeny(int WINDOW_width, int WINDOW_height) {
+        spawPosition[] edges = spawPosition.values();
+        int Index = random.nextInt(edges.length);
+        spawPosition edge = edges[Index];
+        switch (edge) {
+            case left:
+                facing_right = true;
+                position.x = -WIDTH;
+                position.y = random.nextInt(WINDOW_height - HEIGHT);
+                break;
+            case right:
+                facing_right = false;
+                position.x = WINDOW_width;
+                position.y = random.nextInt(WINDOW_height - HEIGHT);
+            default:
+                break;
+        }
+    }
 
     abstract void onDraw();
 
