@@ -2,10 +2,12 @@ package src.Scene;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 import src.Fish.Player;
 import src.Fish.Emeny;
+import src.Fish.Emeny_boss;
 import src.Fish.Emeny_l;
 import src.Fish.Emeny_m;
 import src.Fish.Emeny_s;
@@ -37,8 +39,14 @@ public class GameScene implements Scene {
     @Override
     public void onUpdate(long deltaTime) {
         player.onUpdate(emenies, deltaTime);
-        for (Emeny emeny : emenies) {
+        Iterator<Emeny> it = emenies.iterator();
+
+        while (it.hasNext()) {
+            Emeny emeny = it.next();
             emeny.onUpdate(deltaTime);
+            if (emeny.checkDelete()) {
+                it.remove();
+            }
         }
 
         EmenyType[] EmenyTypes = EmenyType.values();
@@ -57,6 +65,8 @@ public class GameScene implements Scene {
             default:
                 break;
         }
+
+        generateNewEmeny(emenies, 200, new Emeny_boss());
 
         if (player.isDead()) {
             gameOver = true;
