@@ -1,4 +1,4 @@
-package Fish;
+package src.Fish;
 
 import java.awt.Point;
 import java.util.Random;

@@ -1,8 +1,9 @@
-package Fish;
+package src.Fish;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import src.Game;
 
 public class Player {
     private Point position = new Point(100, 100);
@@ -106,21 +107,24 @@ public class Player {
             position.x = 0;
         if (position.y < 0)
             position.y = 0;
-        if (position.x + PLAYER_WIDTH > WIN)
+        if (position.x + PLAYER_WIDTH > Game.getWindowWidth())
+            position.x = Game.getWindowWidth() - PLAYER_WIDTH;
+        if (position.y + PLAYER_HEIGHT > Game.getWindowHeight())
+            position.y = Game.getWindowHeight() - PLAYER_HEIGHT;
 
-            for (Emeny emeny : emenies) {
-                if (emeny.checkCollide(this)) {
-                    if (score < emeny.getScore() || emeny.isInvincible()) {
-                        setDead();
-                    } else {
-                        score++;
-                        if (speed > MIN_SPEED) {
-                            speed--;
-                        }
-                        emeny.setDead();
+        for (Emeny emeny : emenies) {
+            if (emeny.checkCollide(this)) {
+                if (score < emeny.getScore() || emeny.isInvincible()) {
+                    setDead();
+                } else {
+                    score++;
+                    if (speed > MIN_SPEED) {
+                        speed--;
                     }
+                    emeny.setDead();
                 }
             }
+        }
     }
 
 }

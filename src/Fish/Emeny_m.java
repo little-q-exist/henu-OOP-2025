@@ -1,4 +1,4 @@
-package Fish;
+package src.Fish;
 
 public class Emeny_m extends Emeny {
 

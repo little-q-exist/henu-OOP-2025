@@ -1,13 +1,15 @@
+package src;
+
 import javax.swing.JFrame;
 
-import Scene.SceneManager;
+import src.Scene.SceneManager;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Game extends JFrame implements KeyListener {
-    final int WINDOW_width = 1440;
-    final int WINDOW_height = 900;
+    static final int WINDOW_width = 1440;
+    static final int WINDOW_height = 900;
     final int FPS = 60;
     final String title = "¥Û”„≥‘–°”„";
 
@@ -17,12 +19,20 @@ public class Game extends JFrame implements KeyListener {
         sceneManager = new SceneManager();
     }
 
-    String gettitle() {
+    public String gettitle() {
         return title;
     }
 
-    int getFPS() {
+    public int getFPS() {
         return FPS;
+    }
+
+    public static int getWindowWidth() {
+        return WINDOW_width;
+    }
+
+    public static int getWindowHeight() {
+        return WINDOW_height;
     }
 
     @Override

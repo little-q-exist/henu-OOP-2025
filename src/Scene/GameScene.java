@@ -1,10 +1,10 @@
-package Scene;
+package src.Scene;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import Fish.Player;
-import Fish.Emeny;
+import src.Fish.Player;
+import src.Fish.Emeny;
 
 public class GameScene implements Scene {
 
