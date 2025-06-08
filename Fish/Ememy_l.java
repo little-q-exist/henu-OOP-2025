@@ -8,6 +8,7 @@ public class Ememy_l extends Emeny {
         setScore(15);
         setWIDTH(250);
         setHEIGHT(150);
+        setInvincible(false);
     }
 
     @Override

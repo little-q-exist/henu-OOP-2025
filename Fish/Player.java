@@ -19,6 +19,10 @@ public class Player {
     private boolean isDead = false;
     private int score = 2;
 
+    public void setDead() {
+        isDead = true;
+    }
+
     public boolean isDead() {
         return isDead;
     }
@@ -97,11 +101,17 @@ public class Player {
     public void onUpdate(ArrayList<Emeny> emenies) {
         position.x += (right_key_down - left_key_down) * speed;
         position.y += (down_key_down - up_key_down) * speed;
+
+        if (position.x < 0)
+            position.x = 0;
+        if (position.y < 0)
+            position.y = 0;
+        // if (position.x + PLAYER_WIDTH > WIN)
+
         for (Emeny emeny : emenies) {
             if (emeny.checkCollide(this)) {
-                if (score < emeny.getScore()) {
-                    isDead = true;
-
+                if (score < emeny.getScore() || emeny.isInvincible()) {
+                    setDead();
                 } else {
                     score++;
                     if (speed > MIN_SPEED) {

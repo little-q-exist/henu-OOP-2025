@@ -10,6 +10,7 @@ public abstract class Emeny {
     private int score;
     private int SPEED;
     private boolean isDead = false;
+    private boolean Invincible;
 
     private boolean facing_right;
 
@@ -98,6 +99,14 @@ public abstract class Emeny {
 
     public void setHEIGHT(int hEIGHT) {
         HEIGHT = hEIGHT;
+    }
+
+    public boolean isInvincible() {
+        return Invincible;
+    }
+
+    public void setInvincible(boolean invincible) {
+        Invincible = invincible;
     }
 
     boolean checkCollide(Player player) {

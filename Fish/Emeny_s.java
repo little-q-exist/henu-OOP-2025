@@ -8,6 +8,8 @@ public class Emeny_s extends Emeny {
         setScore(1);
         setWIDTH(45);
         setHEIGHT(70);
+        setInvincible(false);
+
     }
 
     @Override
