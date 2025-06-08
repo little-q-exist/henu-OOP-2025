@@ -28,6 +28,10 @@ public class GameScene implements Scene {
     @Override
     public void onUpdate(long deltaTime) {
         player.onUpdate(emenies, deltaTime);
+        for (Emeny emeny : emenies) {
+            emeny.onUpdate(deltaTime);
+        }
+
         if (player.isDead()) {
             gameOver = true;
         }
@@ -69,8 +73,12 @@ public class GameScene implements Scene {
     public void handleKeyRelease(KeyEvent e) {
     }
 
-    void generateNewEmeny(ArrayList<Emeny> emenies, int MAX_INTERVAL) {
-        int INTERVAL = random.nextInt(MAX_INTERVAL) + 1;
+    private long EmenyGeneratorCount = 0;
 
+    void generateNewEmeny(ArrayList<Emeny> emenies, int MAX_INTERVAL, Emeny type) {
+        int INTERVAL = random.nextInt(MAX_INTERVAL) + 1;
+        if ((++EmenyGeneratorCount) % INTERVAL == 0) {
+            emenies.add(type);
+        }
     }
 }

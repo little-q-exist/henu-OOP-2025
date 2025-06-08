@@ -42,7 +42,7 @@ public abstract class Emeny {
 
     abstract void onDraw();
 
-    final void onUpdate(long deltaTime) {
+    final public void onUpdate(long deltaTime) {
         move(deltaTime);
         // emenies own logic
     }
