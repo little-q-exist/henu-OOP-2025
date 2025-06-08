@@ -2,6 +2,8 @@ package src;
 
 import javax.swing.JFrame;
 
+import src.Scene.GameScene;
+import src.Scene.MenuScene;
 import src.Scene.SceneManager;
 
 import java.awt.event.KeyEvent;
@@ -17,6 +19,7 @@ public class Game extends JFrame implements KeyListener {
 
     Game() {
         sceneManager = new SceneManager();
+        sceneManager.setCurrentScene(new GameScene());
     }
 
     public String gettitle() {

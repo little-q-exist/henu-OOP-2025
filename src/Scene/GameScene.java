@@ -28,6 +28,7 @@ public class GameScene implements Scene {
         debug = false;
         pause = false;
         gameOver = false;
+        player = new Player();
     }
 
     enum EmenyType {
@@ -74,6 +75,7 @@ public class GameScene implements Scene {
         if (gameOver) {
             sceneManager.switchTo(new MenuScene());
         }
+        System.out.println("UPDATING");
     }
 
     @Override
