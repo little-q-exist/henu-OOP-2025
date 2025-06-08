@@ -2,8 +2,8 @@ package src.Fish;
 
 public class Emeny_boss extends Emeny {
 
-    Emeny_boss(int WINDOW_width, int WINDOW_height) {
-        super(WINDOW_width, WINDOW_height);
+    public Emeny_boss() {
+        super();
         setSPEED(8);
         setScore(20);
         setInvincible(true);

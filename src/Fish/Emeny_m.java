@@ -2,8 +2,8 @@ package src.Fish;
 
 public class Emeny_m extends Emeny {
 
-    Emeny_m(int WINDOW_width, int WINDOW_height) {
-        super(WINDOW_width, WINDOW_height);
+    public Emeny_m() {
+        super();
         setSPEED(0.1f);
         setScore(8);
         setWIDTH(180);

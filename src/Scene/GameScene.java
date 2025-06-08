@@ -6,6 +6,9 @@ import java.util.Random;
 
 import src.Fish.Player;
 import src.Fish.Emeny;
+import src.Fish.Emeny_l;
+import src.Fish.Emeny_m;
+import src.Fish.Emeny_s;
 
 public class GameScene implements Scene {
 
@@ -25,11 +28,34 @@ public class GameScene implements Scene {
         gameOver = false;
     }
 
+    enum EmenyType {
+        small,
+        medium,
+        large
+    }
+
     @Override
     public void onUpdate(long deltaTime) {
         player.onUpdate(emenies, deltaTime);
         for (Emeny emeny : emenies) {
             emeny.onUpdate(deltaTime);
+        }
+
+        EmenyType[] EmenyTypes = EmenyType.values();
+        int Index = random.nextInt(EmenyTypes.length);
+        EmenyType EmenyType = EmenyTypes[Index];
+        switch (EmenyType) {
+            case small:
+                generateNewEmeny(emenies, 20, new Emeny_s());
+                break;
+            case medium:
+                generateNewEmeny(emenies, 10, new Emeny_m());
+                break;
+            case large:
+                generateNewEmeny(emenies, 5, new Emeny_l());
+                break;
+            default:
+                break;
         }
 
         if (player.isDead()) {

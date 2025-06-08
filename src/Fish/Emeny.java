@@ -1,5 +1,6 @@
 package src.Fish;
 
+import src.Game;
 import java.awt.Point;
 import java.util.Random;
 
@@ -21,7 +22,7 @@ public abstract class Emeny {
         right
     }
 
-    Emeny(int WINDOW_width, int WINDOW_height) {
+    Emeny() {
         spawPosition[] edges = spawPosition.values();
         int Index = random.nextInt(edges.length);
         spawPosition edge = edges[Index];
@@ -29,12 +30,12 @@ public abstract class Emeny {
             case left:
                 facing_right = true;
                 position.x = -WIDTH;
-                position.y = random.nextInt(WINDOW_height - HEIGHT);
+                position.y = random.nextInt(Game.getWindowHeight() - HEIGHT);
                 break;
             case right:
                 facing_right = false;
-                position.x = WINDOW_width;
-                position.y = random.nextInt(WINDOW_height - HEIGHT);
+                position.x = Game.getWindowWidth();
+                position.y = random.nextInt(Game.getWindowHeight() - HEIGHT);
             default:
                 break;
         }
@@ -51,6 +52,16 @@ public abstract class Emeny {
         Point currentposition = getPosition();
         currentposition.x += (facing_right ? 1 : -1) * SPEED * deltaTime;
         setPosition(currentposition);
+    }
+
+    public boolean checkDelete() {
+        return isDead() || isOutOfBounds();
+    }
+
+    private boolean isOutOfBounds() {
+        boolean outOfBounds_x = position.x - WIDTH < 0 && position.x > Game.getWindowWidth();
+        boolean outOfBounds_y = position.y - HEIGHT < 0 && position.y > Game.getWindowHeight();
+        return outOfBounds_x && outOfBounds_y;
     }
 
     public Point getPosition() {
