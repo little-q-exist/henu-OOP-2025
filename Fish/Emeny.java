@@ -9,7 +9,10 @@ public abstract class Emeny {
     private int HEIGHT;
     private int score;
     private int SPEED;
-    boolean facing_right;
+    private boolean isDead = false;
+
+    private boolean facing_right;
+
     private Random random = new Random();
 
     enum spawPosition {
@@ -40,6 +43,7 @@ public abstract class Emeny {
 
     final void onUpdate() {
         move();
+        // emenies own logic
     }
 
     private void move() {
@@ -70,6 +74,30 @@ public abstract class Emeny {
 
     public void setSPEED(int sPEED) {
         SPEED = sPEED;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead() {
+        isDead = true;
+    }
+
+    public int getWIDTH() {
+        return WIDTH;
+    }
+
+    public void setWIDTH(int wIDTH) {
+        WIDTH = wIDTH;
+    }
+
+    public int getHEIGHT() {
+        return HEIGHT;
+    }
+
+    public void setHEIGHT(int hEIGHT) {
+        HEIGHT = hEIGHT;
     }
 
     boolean checkCollide(Player player) {

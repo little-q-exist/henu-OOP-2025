@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class Player {
     private Point position = new Point(100, 100);
-    private int PLAYER_WIDTH;
-    private int PLAYER_HEIGHT;
+    private final int PLAYER_WIDTH = 50;
+    private final int PLAYER_HEIGHT = 50;
     private final int MIN_SPEED = 10;
     private final int MAX_SPEED = 20;
     private int speed = MAX_SPEED;
@@ -15,7 +15,7 @@ public class Player {
     private int down_key_down = 0;
     private int left_key_down = 0;
     private int right_key_down = 0;
-    int facing_right = 1;
+    private int facing_right = 1;
     private boolean isDead = false;
     private int score = 2;
 
@@ -107,6 +107,7 @@ public class Player {
                     if (speed > MIN_SPEED) {
                         speed--;
                     }
+                    emeny.setDead();
                 }
             }
         }

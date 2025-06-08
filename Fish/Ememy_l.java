@@ -6,6 +6,8 @@ public class Ememy_l extends Emeny {
         super(WINDOW_width, WINDOW_height);
         setSPEED(10);
         setScore(15);
+        setWIDTH(250);
+        setHEIGHT(150);
     }
 
     @Override
