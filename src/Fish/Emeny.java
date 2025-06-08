@@ -8,7 +8,7 @@ public abstract class Emeny {
     private int WIDTH;
     private int HEIGHT;
     private int score;
-    private int SPEED;
+    private double SPEED;
     private boolean isDead = false;
     private boolean Invincible;
 
@@ -42,14 +42,14 @@ public abstract class Emeny {
 
     abstract void onDraw();
 
-    final void onUpdate() {
-        move();
+    final void onUpdate(long deltaTime) {
+        move(deltaTime);
         // emenies own logic
     }
 
-    private void move() {
+    private void move(long deltaTime) {
         Point currentposition = getPosition();
-        currentposition.x += (facing_right ? 1 : -1) * SPEED;
+        currentposition.x += (facing_right ? 1 : -1) * SPEED * deltaTime;
         setPosition(currentposition);
     }
 
@@ -69,11 +69,11 @@ public abstract class Emeny {
         this.position = position;
     }
 
-    public int getSPEED() {
+    public double getSPEED() {
         return SPEED;
     }
 
-    public void setSPEED(int sPEED) {
+    public void setSPEED(double sPEED) {
         SPEED = sPEED;
     }
 

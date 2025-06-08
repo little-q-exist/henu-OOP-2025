@@ -2,12 +2,14 @@ package src.Scene;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
 import src.Fish.Player;
 import src.Fish.Emeny;
 
 public class GameScene implements Scene {
 
+    private Random random = new Random();
     private SceneManager sceneManager = new SceneManager();
     private boolean debug;
     private boolean pause;
@@ -25,7 +27,7 @@ public class GameScene implements Scene {
 
     @Override
     public void onUpdate(long deltaTime) {
-        player.onUpdate(emenies);
+        player.onUpdate(emenies, deltaTime);
         if (player.isDead()) {
             gameOver = true;
         }
@@ -65,5 +67,10 @@ public class GameScene implements Scene {
 
     @Override
     public void handleKeyRelease(KeyEvent e) {
+    }
+
+    void generateNewEmeny(ArrayList<Emeny> emenies, int MAX_INTERVAL) {
+        int INTERVAL = random.nextInt(MAX_INTERVAL) + 1;
+
     }
 }

@@ -9,9 +9,9 @@ public class Player {
     private Point position = new Point(100, 100);
     private final int PLAYER_WIDTH = 50;
     private final int PLAYER_HEIGHT = 50;
-    private final int MIN_SPEED = 10;
-    private final int MAX_SPEED = 20;
-    private int speed = MAX_SPEED;
+    private final double MIN_SPEED = 0.5f;
+    private final double MAX_SPEED = 1.3f;
+    private double speed = MAX_SPEED;
     private int up_key_down = 0;
     private int down_key_down = 0;
     private int left_key_down = 0;
@@ -99,9 +99,9 @@ public class Player {
         }
     }
 
-    public void onUpdate(ArrayList<Emeny> emenies) {
-        position.x += (right_key_down - left_key_down) * speed;
-        position.y += (down_key_down - up_key_down) * speed;
+    public void onUpdate(ArrayList<Emeny> emenies, long deltaTime) {
+        position.x += (right_key_down - left_key_down) * speed * deltaTime;
+        position.y += (down_key_down - up_key_down) * speed * deltaTime;
 
         if (position.x < 0)
             position.x = 0;
@@ -119,7 +119,7 @@ public class Player {
                 } else {
                     score++;
                     if (speed > MIN_SPEED) {
-                        speed--;
+                        speed -= 0.01f;
                     }
                     emeny.setDead();
                 }
