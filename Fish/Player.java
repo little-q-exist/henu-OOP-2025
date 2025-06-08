@@ -17,7 +17,7 @@ public class Player {
     private int right_key_down = 0;
     int facing_right = 1;
     private boolean isDead = false;
-    private int score = 5;
+    private int score = 2;
 
     public boolean isDead() {
         return isDead;

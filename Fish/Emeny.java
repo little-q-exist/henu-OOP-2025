@@ -8,6 +8,7 @@ public abstract class Emeny {
     private int WIDTH;
     private int HEIGHT;
     private int score;
+    private int SPEED;
     boolean facing_right;
     private Random random = new Random();
 
@@ -37,7 +38,15 @@ public abstract class Emeny {
 
     abstract void onDraw();
 
-    abstract void onUpdate();
+    final void onUpdate() {
+        move();
+    }
+
+    private void move() {
+        Point currentposition = getPosition();
+        currentposition.x += (facing_right ? 1 : -1) * SPEED;
+        setPosition(currentposition);
+    }
 
     public Point getPosition() {
         return position;
@@ -53,6 +62,14 @@ public abstract class Emeny {
 
     public void setPosition(Point position) {
         this.position = position;
+    }
+
+    public int getSPEED() {
+        return SPEED;
+    }
+
+    public void setSPEED(int sPEED) {
+        SPEED = sPEED;
     }
 
     boolean checkCollide(Player player) {
