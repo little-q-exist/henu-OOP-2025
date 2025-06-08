@@ -23,6 +23,8 @@ public abstract class Emeny {
     }
 
     Emeny() {
+        position = new Point();
+
         spawPosition[] edges = spawPosition.values();
         int Index = random.nextInt(edges.length);
         spawPosition edge = edges[Index];
