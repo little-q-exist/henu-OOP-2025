@@ -19,6 +19,7 @@ public class Game extends JFrame implements KeyListener {
 
     Game() {
         sceneManager = new SceneManager();
+        // sceneManager.setCurrentScene(new MenuScene(sceneManager));
         sceneManager.setCurrentScene(new GameScene(sceneManager));
     }
 

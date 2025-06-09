@@ -4,6 +4,12 @@ import java.awt.event.KeyEvent;
 
 public class SelectorScene implements Scene {
 
+    private SceneManager sceneManager;
+
+    public SelectorScene(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
+
     @Override
     public void onEnter() {
     }

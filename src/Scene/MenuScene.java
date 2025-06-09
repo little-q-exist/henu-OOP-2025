@@ -4,6 +4,12 @@ import java.awt.event.KeyEvent;
 
 public class MenuScene implements Scene {
 
+    private SceneManager sceneManager;
+
+    public MenuScene(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
+
     @Override
     public void onEnter() {
     }

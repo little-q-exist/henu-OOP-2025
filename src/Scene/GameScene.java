@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.Random;
 
 import src.Fish.Player;
-import src.Game;
 import src.Fish.Emeny;
 import src.Fish.Emeny_boss;
 import src.Fish.Emeny_l;
@@ -78,7 +77,7 @@ public class GameScene implements Scene {
             gameOver = true;
         }
         if (gameOver) {
-            sceneManager.switchTo(new MenuScene());
+            sceneManager.switchTo(new MenuScene(sceneManager));
         }
     }
 
