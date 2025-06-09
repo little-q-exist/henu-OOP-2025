@@ -19,7 +19,7 @@ public class Game extends JFrame implements KeyListener {
 
     Game() {
         sceneManager = new SceneManager();
-        sceneManager.setCurrentScene(new GameScene());
+        sceneManager.setCurrentScene(new GameScene(sceneManager));
     }
 
     public String gettitle() {
@@ -60,6 +60,9 @@ public class Game extends JFrame implements KeyListener {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle(gettitle());
+
+        this.addKeyListener(this);
+        this.requestFocus();
 
         long lastTime = System.currentTimeMillis();
 

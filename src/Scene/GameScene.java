@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import src.Fish.Player;
+import src.Game;
 import src.Fish.Emeny;
 import src.Fish.Emeny_boss;
 import src.Fish.Emeny_l;
@@ -15,13 +16,17 @@ import src.Fish.Emeny_s;
 public class GameScene implements Scene {
 
     private Random random = new Random();
-    private SceneManager sceneManager = new SceneManager();
+    private SceneManager sceneManager;
     private boolean debug;
     private boolean pause;
     private boolean gameOver = false;
 
     private Player player;
     private ArrayList<Emeny> emenies = new ArrayList<>();
+
+    public GameScene(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
 
     @Override
     public void onEnter() {
@@ -93,7 +98,6 @@ public class GameScene implements Scene {
         switch (KeyCode) {
             case KeyEvent.VK_Q:
                 debug = !debug;
-                System.out.println("DEBUG");
                 break;
             case KeyEvent.VK_SPACE:
                 pause = !pause;

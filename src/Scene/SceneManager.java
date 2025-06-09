@@ -23,23 +23,35 @@ public class SceneManager {
     }
 
     public void onUpdate(long deltaTime) {
-        if (currentScene == null)
+        if (currentScene == null) {
+            System.err.println("Scene is null.");
             return;
+        }
 
         currentScene.onUpdate(deltaTime);
     }
 
     public void onDraw() {
-        if (currentScene == null)
+        if (currentScene == null) {
+            System.err.println("Scene is null.");
             return;
+        }
         currentScene.onDraw();
     }
 
     public void keyPressed(KeyEvent e) {
+        if (currentScene == null) {
+            System.err.println("Scene is null.");
+            return;
+        }
         currentScene.onKeyPressed(e);
     }
 
     public void keyReleased(KeyEvent e) {
+        if (currentScene == null) {
+            System.err.println("Scene is null.");
+            return;
+        }
         currentScene.onKeyReleased(e);
     }
 }
