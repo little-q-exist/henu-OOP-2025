@@ -55,6 +55,7 @@ public class Player {
         switch (KeyCode) {
             case KeyEvent.VK_UP:
                 up_key_down = 1;
+                System.out.println("UP KEY PRESSED");
                 break;
             case KeyEvent.VK_DOWN:
                 down_key_down = 1;

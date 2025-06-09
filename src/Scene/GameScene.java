@@ -75,7 +75,6 @@ public class GameScene implements Scene {
         if (gameOver) {
             sceneManager.switchTo(new MenuScene());
         }
-        System.out.println("UPDATING");
     }
 
     @Override
@@ -94,6 +93,7 @@ public class GameScene implements Scene {
         switch (KeyCode) {
             case KeyEvent.VK_Q:
                 debug = !debug;
+                System.out.println("DEBUG");
                 break;
             case KeyEvent.VK_SPACE:
                 pause = !pause;
@@ -109,6 +109,11 @@ public class GameScene implements Scene {
 
     @Override
     public void handleKeyRelease(KeyEvent e) {
+        int KeyCode = e.getKeyCode();
+        if (KeyCode == KeyEvent.VK_UP || KeyCode == KeyEvent.VK_DOWN || KeyCode == KeyEvent.VK_LEFT
+                || KeyCode == KeyEvent.VK_RIGHT) {
+            player.onInput(e);
+        }
     }
 
     private long EmenyGeneratorCount = 0;
