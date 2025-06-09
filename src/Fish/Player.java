@@ -40,17 +40,7 @@ public class Player {
         return PLAYER_HEIGHT;
     }
 
-    public void onInput(KeyEvent e) {
-        int KeyID = e.getID();
-        if (KeyID == KeyEvent.KEY_PRESSED) {
-            handleKeyPress(e);
-        } else if (KeyID == KeyEvent.KEY_RELEASED) {
-            handleKeyRelease(e);
-        }
-
-    }
-
-    void handleKeyPress(KeyEvent e) {
+    public void onKeyPressed(KeyEvent e) {
         int KeyCode = e.getKeyCode();
         switch (KeyCode) {
             case KeyEvent.VK_UP:
@@ -71,7 +61,7 @@ public class Player {
         }
     }
 
-    void handleKeyRelease(KeyEvent e) {
+    public void onKeyReleased(KeyEvent e) {
         int KeyCode = e.getKeyCode();
         switch (KeyCode) {
             case KeyEvent.VK_UP:

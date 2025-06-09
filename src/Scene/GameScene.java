@@ -88,7 +88,7 @@ public class GameScene implements Scene {
     }
 
     @Override
-    public void handleKeyPress(KeyEvent e) {
+    public void onKeyPressed(KeyEvent e) {
         int KeyCode = e.getKeyCode();
         switch (KeyCode) {
             case KeyEvent.VK_Q:
@@ -103,16 +103,16 @@ public class GameScene implements Scene {
         }
         if (KeyCode == KeyEvent.VK_UP || KeyCode == KeyEvent.VK_DOWN || KeyCode == KeyEvent.VK_LEFT
                 || KeyCode == KeyEvent.VK_RIGHT) {
-            player.onInput(e);
+            player.onKeyPressed(e);
         }
     }
 
     @Override
-    public void handleKeyRelease(KeyEvent e) {
+    public void onKeyReleased(KeyEvent e) {
         int KeyCode = e.getKeyCode();
         if (KeyCode == KeyEvent.VK_UP || KeyCode == KeyEvent.VK_DOWN || KeyCode == KeyEvent.VK_LEFT
                 || KeyCode == KeyEvent.VK_RIGHT) {
-            player.onInput(e);
+            player.onKeyReleased(e);
         }
     }
 

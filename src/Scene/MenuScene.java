@@ -21,12 +21,12 @@ public class MenuScene implements Scene {
     }
 
     @Override
-    public void handleKeyPress(KeyEvent e) {
+    public void onKeyPressed(KeyEvent e) {
 
     }
 
     @Override
-    public void handleKeyRelease(KeyEvent e) {
+    public void onKeyReleased(KeyEvent e) {
 
     }
 }

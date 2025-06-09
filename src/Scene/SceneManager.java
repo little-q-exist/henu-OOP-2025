@@ -35,10 +35,11 @@ public class SceneManager {
         currentScene.onDraw();
     }
 
-    public void onInput(KeyEvent e) {
-        if (currentScene == null)
-            return;
+    public void keyPressed(KeyEvent e) {
+        currentScene.onKeyPressed(e);
+    }
 
-        currentScene.onInput(e);
+    public void keyReleased(KeyEvent e) {
+        currentScene.onKeyReleased(e);
     }
 }

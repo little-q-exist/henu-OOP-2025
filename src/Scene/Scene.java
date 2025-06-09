@@ -9,19 +9,9 @@ public interface Scene {
 
     void onDraw();
 
-    default void onInput(KeyEvent e) {
-        int KeyID = e.getID();
-        if (KeyID == KeyEvent.KEY_PRESSED) {
-            handleKeyPress(e);
-        } else if (KeyID == KeyEvent.KEY_RELEASED) {
-            handleKeyRelease(e);
-        }
-    }
-
     void onExit();
 
-    void handleKeyPress(KeyEvent e);
+    void onKeyPressed(KeyEvent e);
 
-    void handleKeyRelease(KeyEvent e);
-
+    void onKeyReleased(KeyEvent e);
 }
