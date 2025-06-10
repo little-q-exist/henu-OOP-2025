@@ -1,6 +1,8 @@
 package src;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -54,6 +56,9 @@ public class IMAGE extends JPanel {
         }
         if (image == null) {
             System.err.println("Failed to load image.");
+        } else {
+            imgWidth = image.getWidth();
+            imgHeight = image.getHeight();
         }
     }
 
@@ -65,6 +70,20 @@ public class IMAGE extends JPanel {
         } else {
             System.err.println("Image is null.");
         }
+    }
+
+    public void flipImage() {
+        BufferedImage flipped = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
+
+        Graphics2D g = flipped.createGraphics();
+
+        AffineTransform transform = new AffineTransform();
+        transform.translate(imgWidth, 0);
+        transform.scale(-1, 1);
+        g.setTransform(transform);
+        g.drawImage(image, 0, 0, null);
+        g.dispose();
+        image = flipped;
     }
 
 }

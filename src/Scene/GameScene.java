@@ -81,11 +81,11 @@ public class GameScene extends Scene {
             gameOver = true;
         }
         if (gameOver) {
-            sceneManager.switchTo(new MenuScene(sceneManager));
+            // sceneManager.switchTo(new MenuScene(sceneManager));
         }
     }
 
-    private IMAGE playerImage = ResourcesManager.getInstance().getImage("player");
+    private IMAGE playerImage;
     private IMAGE backGroundImage = ResourcesManager.getInstance().getImage("backGround");
 
     @Override

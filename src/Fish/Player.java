@@ -8,7 +8,7 @@ import src.IMAGE;
 import src.ResourcesManager;
 
 public class Player {
-    private Point position = new Point(100, 100);
+    private Point position = new Point(Game.getWindowWidth() / 2, Game.getWindowHeight() / 2);
     private final int PLAYER_WIDTH = 50;
     private final int PLAYER_HEIGHT = 50;
     private final double MIN_SPEED = 0.5f;
@@ -22,7 +22,7 @@ public class Player {
     private boolean isDead = false;
     private int score = 2;
 
-    private IMAGE playerImage = ResourcesManager.getInstance().getImage("player");
+    private IMAGE playerImage;
 
     public void setDead() {
         isDead = true;
@@ -91,6 +91,7 @@ public class Player {
         } else if (dir_x < 0) {
             facing_right = 0;
         }
+        playerImage = ResourcesManager.getInstance().getImage((facing_right == 1 ? "playerRight" : "playerLeft"));
         playerImage.setProperties(position.x, position.y, PLAYER_WIDTH, PLAYER_HEIGHT);
         return playerImage;
     }
@@ -122,7 +123,7 @@ public class Player {
             }
         }
 
-        if (right_key_down == 1) {
+        if (right_key_down == 1 || down_key_down == 1 || left_key_down == 1 || up_key_down == 1) {
             System.out.println(position);
         }
     }
