@@ -2,6 +2,8 @@ package src.Scene;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JPanel;
+
 public class SceneManager {
     private Scene currentScene = null;
 
@@ -31,14 +33,6 @@ public class SceneManager {
         currentScene.onUpdate(deltaTime);
     }
 
-    public void onDraw() {
-        if (currentScene == null) {
-            System.err.println("Scene is null.");
-            return;
-        }
-        currentScene.onDraw();
-    }
-
     public void keyPressed(KeyEvent e) {
         if (currentScene == null) {
             System.err.println("Scene is null.");
@@ -53,5 +47,9 @@ public class SceneManager {
             return;
         }
         currentScene.onKeyReleased(e);
+    }
+
+    public JPanel getScenePanel() {
+        return currentScene.getScenePanel();
     }
 }

@@ -1,18 +1,22 @@
 package src.Scene;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
 import src.Fish.Player;
+import src.Game;
+import src.IMAGE;
+import src.ResourcesManager;
 import src.Fish.Emeny;
 import src.Fish.Emeny_boss;
 import src.Fish.Emeny_l;
 import src.Fish.Emeny_m;
 import src.Fish.Emeny_s;
 
-public class GameScene implements Scene {
+public class GameScene extends Scene {
 
     private Random random = new Random();
     private SceneManager sceneManager;
@@ -81,9 +85,17 @@ public class GameScene implements Scene {
         }
     }
 
+    private IMAGE playerImage = ResourcesManager.getInstance().getImage("player");
+    private IMAGE backGroundImage = ResourcesManager.getInstance().getImage("backGround");
+
     @Override
-    public void onDraw() {
-        player.onDraw();
+    public void onDraw(Graphics g) {
+        playerImage = player.onDraw();
+        g.drawImage(backGroundImage.getImage(), backGroundImage.getxPos(), backGroundImage.getyPos(),
+                Game.getWindowWidth(),
+                Game.getWindowHeight(), null);
+        g.drawImage(playerImage.getImage(), playerImage.getxPos(), playerImage.getyPos(), playerImage.getImgWidth(),
+                playerImage.getImgHeight(), null);
     }
 
     @Override

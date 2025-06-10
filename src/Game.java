@@ -76,13 +76,8 @@ public class Game extends JFrame implements KeyListener {
             lastTime = currentTime;
 
             sceneManager.onUpdate(deltaTime);
-            sceneManager.onDraw();
 
-            IMAGE playerImage = ResourcesManager.getInstance().getImage("player");
-            if (playerImage == null || playerImage.getImage() == null) {
-                System.out.println("image NULL");
-            }
-            this.add(playerImage);
+            add(sceneManager.getScenePanel());
 
             this.revalidate();
             this.repaint();

@@ -84,14 +84,15 @@ public class Player {
         }
     }
 
-    public void onDraw() {
-        playerImage.setProperties(position.x, position.y, PLAYER_WIDTH, PLAYER_HEIGHT);
+    public IMAGE onDraw() {
         int dir_x = (right_key_down - left_key_down);
         if (dir_x > 0) {
             facing_right = 1;
         } else if (dir_x < 0) {
             facing_right = 0;
         }
+        playerImage.setProperties(position.x, position.y, PLAYER_WIDTH, PLAYER_HEIGHT);
+        return playerImage;
     }
 
     public void onUpdate(ArrayList<Emeny> emenies, long deltaTime) {
@@ -119,6 +120,10 @@ public class Player {
                     emeny.setDead();
                 }
             }
+        }
+
+        if (right_key_down == 1) {
+            System.out.println(position);
         }
     }
 

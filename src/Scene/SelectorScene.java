@@ -1,8 +1,9 @@
 package src.Scene;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
-public class SelectorScene implements Scene {
+public class SelectorScene extends Scene {
 
     private SceneManager sceneManager;
 
@@ -19,7 +20,7 @@ public class SelectorScene implements Scene {
     }
 
     @Override
-    public void onDraw() {
+    public void onDraw(Graphics g) {
     }
 
     @Override

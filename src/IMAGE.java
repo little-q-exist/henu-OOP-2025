@@ -27,6 +27,14 @@ public class IMAGE extends JPanel {
         return yPos;
     }
 
+    public int getImgWidth() {
+        return imgWidth;
+    }
+
+    public int getImgHeight() {
+        return imgHeight;
+    }
+
     public void setProperties(int xPos, int yPos, int imgWidth, int imgHeight) {
         this.xPos = xPos;
         this.yPos = yPos;

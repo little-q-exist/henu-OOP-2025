@@ -1,17 +1,37 @@
 package src.Scene;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
-public interface Scene {
-    void onEnter();
+import javax.swing.JPanel;
 
-    void onUpdate(long deltaTime);
+public abstract class Scene {
 
-    void onDraw();
+    protected JPanel scenePanel;
 
-    void onExit();
+    Scene() {
+        scenePanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                onDraw(g);
+            }
+        };
+    }
 
-    void onKeyPressed(KeyEvent e);
+    abstract void onEnter();
 
-    void onKeyReleased(KeyEvent e);
+    abstract void onUpdate(long deltaTime);
+
+    abstract void onDraw(Graphics g);
+
+    abstract void onExit();
+
+    abstract void onKeyPressed(KeyEvent e);
+
+    abstract void onKeyReleased(KeyEvent e);
+
+    public JPanel getScenePanel() {
+        return scenePanel;
+    }
 }
