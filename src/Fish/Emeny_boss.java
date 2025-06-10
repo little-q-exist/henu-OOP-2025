@@ -1,5 +1,8 @@
 package src.Fish;
 
+import src.IMAGE;
+import src.ResourcesManager;
+
 public class Emeny_boss extends Emeny {
 
     public Emeny_boss() {
@@ -9,9 +12,17 @@ public class Emeny_boss extends Emeny {
         setInvincible(true);
     }
 
-    @Override
-    void onDraw() {
+    private IMAGE Emeny_bossImage;
 
+    @Override
+    public IMAGE onDraw() {
+        Emeny_bossImage = ResourcesManager.getInstance()
+                .getImage((isFacing_right() ? "Emeny_bossRight" : "Emeny_bossLeft"));
+        Emeny_bossImage.setProperties(getPosition().x, getPosition().y, getWIDTH(), getHEIGHT());
+        if (Emeny_bossImage == null) {
+            System.out.println("image null");
+        }
+        return Emeny_bossImage;
     }
 
 }

@@ -1,6 +1,8 @@
 package src.Fish;
 
 import src.Game;
+import src.IMAGE;
+
 import java.awt.Point;
 import java.util.Random;
 
@@ -43,7 +45,7 @@ public abstract class Emeny {
         }
     }
 
-    abstract void onDraw();
+    abstract public IMAGE onDraw();
 
     final public void onUpdate(long deltaTime) {
         move(deltaTime);
@@ -120,6 +122,10 @@ public abstract class Emeny {
 
     public void setInvincible(boolean invincible) {
         Invincible = invincible;
+    }
+
+    public boolean isFacing_right() {
+        return facing_right;
     }
 
     boolean checkCollide(Player player) {

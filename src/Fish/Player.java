@@ -93,6 +93,9 @@ public class Player {
         }
         playerImage = ResourcesManager.getInstance().getImage((facing_right == 1 ? "playerRight" : "playerLeft"));
         playerImage.setProperties(position.x, position.y, PLAYER_WIDTH, PLAYER_HEIGHT);
+        if (playerImage == null) {
+            System.out.println("Playerimage null");
+        }
         return playerImage;
     }
 
