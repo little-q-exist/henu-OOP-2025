@@ -6,6 +6,7 @@ import src.Scene.GameScene;
 import src.Scene.MenuScene;
 import src.Scene.SceneManager;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -16,8 +17,6 @@ public class Game extends JFrame implements KeyListener {
     final String title = "¥Û”„≥‘–°”„";
 
     private SceneManager sceneManager;
-
-    private ResourcesManager resourcesManager;
 
     Game() {
         sceneManager = new SceneManager();
@@ -67,7 +66,12 @@ public class Game extends JFrame implements KeyListener {
         this.addKeyListener(this);
         this.requestFocus();
 
-        resourcesManager.loadResources();
+        ResourcesManager.getInstance().loadResources();
+
+        IMAGE playerImage = ResourcesManager.getInstance().getImage("player");
+        this.add(playerImage);
+
+        // System.out.println(sceneManager.getCurrentScene().getClass());
 
         long lastTime = System.currentTimeMillis();
 

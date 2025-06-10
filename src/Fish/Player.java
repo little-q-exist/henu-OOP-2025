@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import src.Game;
+import src.IMAGE;
+import src.ResourcesManager;
 
 public class Player {
     private Point position = new Point(100, 100);
@@ -19,6 +21,8 @@ public class Player {
     private int facing_right = 1;
     private boolean isDead = false;
     private int score = 2;
+
+    private IMAGE playerImage = ResourcesManager.getInstance().getImage("player");
 
     public void setDead() {
         isDead = true;
