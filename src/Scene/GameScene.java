@@ -83,6 +83,7 @@ public class GameScene implements Scene {
 
     @Override
     public void onDraw() {
+        player.onDraw();
     }
 
     @Override

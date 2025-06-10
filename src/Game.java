@@ -6,7 +6,6 @@ import src.Scene.GameScene;
 import src.Scene.MenuScene;
 import src.Scene.SceneManager;
 
-import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -21,7 +20,6 @@ public class Game extends JFrame implements KeyListener {
     Game() {
         sceneManager = new SceneManager();
         // sceneManager.setCurrentScene(new MenuScene(sceneManager));
-        sceneManager.setCurrentScene(new GameScene(sceneManager));
     }
 
     public String gettitle() {
@@ -68,12 +66,9 @@ public class Game extends JFrame implements KeyListener {
 
         ResourcesManager.getInstance().loadResources();
 
-        IMAGE playerImage = ResourcesManager.getInstance().getImage("player");
-        this.add(playerImage);
-
-        // System.out.println(sceneManager.getCurrentScene().getClass());
-
         long lastTime = System.currentTimeMillis();
+
+        sceneManager.setCurrentScene(new GameScene(sceneManager));
 
         while (true) {
             long currentTime = System.currentTimeMillis();
@@ -82,6 +77,15 @@ public class Game extends JFrame implements KeyListener {
 
             sceneManager.onUpdate(deltaTime);
             sceneManager.onDraw();
+
+            IMAGE playerImage = ResourcesManager.getInstance().getImage("player");
+            if (playerImage == null || playerImage.getImage() == null) {
+                System.out.println("image NULL");
+            }
+            this.add(playerImage);
+
+            this.revalidate();
+            this.repaint();
 
             if (deltaTime < 1000 / FPS) {
                 try {

@@ -85,6 +85,7 @@ public class Player {
     }
 
     public void onDraw() {
+        playerImage.setProperties(position.x, position.y, PLAYER_WIDTH, PLAYER_HEIGHT);
         int dir_x = (right_key_down - left_key_down);
         if (dir_x > 0) {
             facing_right = 1;

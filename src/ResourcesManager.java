@@ -13,7 +13,7 @@ public class ResourcesManager {
         return resourcesManager;
     }
 
-    private static Map<String, IMAGE> images = new HashMap<>();
+    private final Map<String, IMAGE> images = new HashMap<>();
 
     void loadResource(String key, String path) {
         IMAGE img = new IMAGE();
@@ -22,12 +22,14 @@ public class ResourcesManager {
     }
 
     public void loadResources() {
-        loadResource("backGround", "res\\background.jpg");
-        loadResource("player", "res\\playerFish.png");
+        loadResource("backGround", "src\\res\\background.jpg");
+        loadResource("player", "src\\res\\playerFish.png");
     }
 
     public IMAGE getImage(String key) {
-        if (images.get(key) == null) {
+        IMAGE img = images.get(key);
+
+        if (img == null || img.getImage() == null) {
             System.out.println("NULL");
         }
         return images.get(key);

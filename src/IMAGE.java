@@ -15,6 +15,10 @@ public class IMAGE extends JPanel {
     private int imgWidth;
     private int imgHeight;
 
+    public BufferedImage getImage() {
+        return image;
+    }
+
     public int getxPos() {
         return xPos;
     }
@@ -23,7 +27,18 @@ public class IMAGE extends JPanel {
         return yPos;
     }
 
+    public void setProperties(int xPos, int yPos, int imgWidth, int imgHeight) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.imgWidth = imgWidth;
+        this.imgHeight = imgHeight;
+    }
+
     public void loadImage(String imgPath) {
+        File file = new File(imgPath);
+        System.out.println("Loading path:" + file.getAbsolutePath());
+        System.out.println(file.exists());
+
         try {
             image = ImageIO.read(new File(imgPath));
         } catch (IOException e) {
