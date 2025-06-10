@@ -17,6 +17,8 @@ public class Game extends JFrame implements KeyListener {
 
     private SceneManager sceneManager;
 
+    private ResourcesManager resourcesManager;
+
     Game() {
         sceneManager = new SceneManager();
         // sceneManager.setCurrentScene(new MenuScene(sceneManager));
@@ -64,6 +66,8 @@ public class Game extends JFrame implements KeyListener {
 
         this.addKeyListener(this);
         this.requestFocus();
+
+        resourcesManager.loadResources();
 
         long lastTime = System.currentTimeMillis();
 

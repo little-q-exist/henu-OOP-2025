@@ -9,8 +9,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class Utils {
-    public class Image extends JPanel {
-        private BufferedImage image;
+    public static class IMAGE extends JPanel {
+        private BufferedImage image = null;
         private int xPos;
         private int yPos;
         private int imgWidth;
@@ -24,16 +24,15 @@ public class Utils {
             return yPos;
         }
 
-        public void loadImage(String imgPath, int x, int y, int imgWidth, int imgHeight) {
+        public void loadImage(String imgPath) {
             try {
                 image = ImageIO.read(new File(imgPath));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            xPos = x;
-            yPos = y;
-            this.imgWidth = imgWidth;
-            this.imgHeight = imgHeight;
+            if (image == null) {
+                System.err.println("Failed to load image.");
+            }
         }
 
         @Override
