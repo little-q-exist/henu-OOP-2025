@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 
 import src.Fish.Player;
 import src.Game;
@@ -18,7 +17,6 @@ import src.Fish.Emeny_s;
 
 public class GameScene extends Scene {
 
-    private Random random = new Random();
     private final int MAX_EMENIES = 1;
 
     private SceneManager sceneManager;
@@ -28,7 +26,6 @@ public class GameScene extends Scene {
 
     private Player player;
     private ArrayList<Emeny> emenies = new ArrayList<>();
-    private ArrayList<IMAGE> emenyImages = new ArrayList<>();
 
     public GameScene(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
@@ -87,8 +84,9 @@ public class GameScene extends Scene {
                 Game.getWindowHeight(), null);
         g.drawImage(playerImage.getImage(), playerImage.getxPos(), playerImage.getyPos(), playerImage.getImgWidth(),
                 playerImage.getImgHeight(), null);
-        synchronized (emenyImages) {
-            for (IMAGE emenyImage : emenyImages) {
+        synchronized (emenies) {
+            for (Emeny emeny : emenies) {
+                IMAGE emenyImage = emeny.onDraw();
                 g.drawImage(emenyImage.getImage(), emenyImage.getxPos(), emenyImage.getyPos(), emenyImage.getImgWidth(),
                         emenyImage.getImgHeight(), null);
             }
@@ -160,41 +158,28 @@ public class GameScene extends Scene {
 
     // 所有敌人生成共享同一个计时器，每个敌人都有自己的时间，到了时间才new，加入列表和画出图像
     void generateNewEmeny(EmenyType type) {
-        synchronized (emenyImages) {
-            switch (type) {
-                case small:
-                    Emeny emeny_s = new Emeny_s();
 
-                    System.out.println(emeny_s.getPosition());
+        switch (type) {
+            case small:
+                Emeny emeny_s = new Emeny_s();
 
-                    emenyImages.add(emeny_s.onDraw());
-                    emenies.add(emeny_s);
-                    break;
-                case medium:
-                    Emeny emeny_m = new Emeny_m();
+                System.out.println(emeny_s.getPosition());
 
-                    System.out.println(emeny_m.getPosition());
-
-                    emenyImages.add(emeny_m.onDraw());
-                    emenies.add(emeny_m);
-                    break;
-                case large:
-                    Emeny emeny_l = new Emeny_l();
-
-                    System.out.println(emeny_l.getPosition());
-
-                    emenyImages.add(emeny_l.onDraw());
-                    emenies.add(emeny_l);
-                    break;
-                case boss:
-                    Emeny emeny_boss = new Emeny_boss();
-
-                    System.out.println(emeny_boss.getPosition());
-
-                    emenyImages.add(emeny_boss.onDraw());
-                    emenies.add(emeny_boss);
-                    break;
-            }
+                emenies.add(emeny_s);
+                break;
+            case medium:
+                Emeny emeny_m = new Emeny_m();
+                emenies.add(emeny_m);
+                break;
+            case large:
+                Emeny emeny_l = new Emeny_l();
+                emenies.add(emeny_l);
+                break;
+            case boss:
+                Emeny emeny_boss = new Emeny_boss();
+                emenies.add(emeny_boss);
+                break;
         }
+
     }
 }
