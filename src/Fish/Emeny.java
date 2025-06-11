@@ -53,19 +53,21 @@ public abstract class Emeny {
     }
 
     private void move(long deltaTime) {
-        Point currentposition = getPosition();
-        currentposition.x += (facing_right ? 1 : -1) * SPEED * deltaTime;
-        setPosition(currentposition);
+        position.x += (facing_right ? 1 : -1) * SPEED * deltaTime;
     }
 
-    public boolean checkDelete() {
-        return isDead() || isOutOfBounds();
+    public boolean checkDelete(boolean facing_right) {
+        return isDead() || isOutOfBounds(facing_right);
     }
 
-    private boolean isOutOfBounds() {
-        boolean outOfBounds_x = position.x - WIDTH < 0 && position.x > Game.getWindowWidth();
-        boolean outOfBounds_y = position.y - HEIGHT < 0 && position.y > Game.getWindowHeight();
-        return outOfBounds_x && outOfBounds_y;
+    private boolean isOutOfBounds(boolean facing_right) {
+        boolean outOfBounds_x;
+        if (facing_right) {
+            outOfBounds_x = position.x > Game.getWindowWidth();
+        } else {
+            outOfBounds_x = position.x - WIDTH < 0;
+        }
+        return outOfBounds_x;
     }
 
     public Point getPosition() {

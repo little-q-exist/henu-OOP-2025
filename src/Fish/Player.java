@@ -127,7 +127,7 @@ public class Player {
         }
 
         if (right_key_down == 1 || down_key_down == 1 || left_key_down == 1 || up_key_down == 1) {
-            System.out.println(position);
+            // System.out.println(position);
         }
     }
 

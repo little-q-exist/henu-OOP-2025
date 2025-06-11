@@ -12,7 +12,6 @@ public class Emeny_s extends Emeny {
         setWIDTH(45);
         setHEIGHT(70);
         setInvincible(false);
-
     }
 
     private IMAGE Emeny_sImage;
