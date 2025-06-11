@@ -17,7 +17,7 @@ import src.Fish.Emeny_s;
 
 public class GameScene extends Scene {
 
-    private final int MAX_EMENIES = 1;
+    private final int MAX_EMENIES = 15;
 
     private SceneManager sceneManager;
     private boolean debug;
@@ -59,9 +59,7 @@ public class GameScene extends Scene {
             }
         }
 
-        if (emenies.size() < MAX_EMENIES) {
-            generateNewEmenies();
-        }
+        generateNewEmenies();
 
         // generateNewEmeny(emenies, 200, new Emeny_boss());
 
@@ -130,14 +128,13 @@ public class GameScene extends Scene {
     }
 
     private long EmenyGeneratorCount = 0;
-    private final int Emeny_sGenerateINTERVAL = 500;
-    private final int Emeny_mGenerateINTERVAL = 2500;
-    private final int Emeny_lGenerateINTERVAL = 4000;
-    private final int Emeny_bossGenerateINTERVAL = 12500;
+    private final int Emeny_sGenerateINTERVAL = 250;
+    private final int Emeny_mGenerateINTERVAL = 500;
+    private final int Emeny_lGenerateINTERVAL = 1500;
+    private final int Emeny_bossGenerateINTERVAL = 5000;
 
     void generateNewEmenies() {
         EmenyGeneratorCount++;
-        System.out.println(EmenyGeneratorCount);
 
         if (EmenyGeneratorCount % Emeny_sGenerateINTERVAL == 0) {
             generateNewEmeny(EmenyType.small);
@@ -158,6 +155,10 @@ public class GameScene extends Scene {
 
     // 所有敌人生成共享同一个计时器，每个敌人都有自己的时间，到了时间才new，加入列表和画出图像
     void generateNewEmeny(EmenyType type) {
+
+        if (emenies.size() >= MAX_EMENIES) {
+            return;
+        }
 
         switch (type) {
             case small:

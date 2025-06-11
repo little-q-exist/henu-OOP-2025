@@ -12,7 +12,7 @@ public class Player {
     private final int PLAYER_WIDTH = 50;
     private final int PLAYER_HEIGHT = 50;
     private final double MIN_SPEED = 0.5f;
-    private final double MAX_SPEED = 1.3f;
+    private final double MAX_SPEED = 1.1f;
     private double speed = MAX_SPEED;
     private int up_key_down = 0;
     private int down_key_down = 0;
@@ -119,7 +119,7 @@ public class Player {
                 } else {
                     score++;
                     if (speed > MIN_SPEED) {
-                        speed -= 0.01f;
+                        speed -= 0.05f;
                     }
                     emeny.setDead();
                 }

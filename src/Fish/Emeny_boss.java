@@ -7,7 +7,7 @@ public class Emeny_boss extends Emeny {
 
     public Emeny_boss() {
         super();
-        setSPEED(0.55f);
+        setSPEED(0.25f);
         setScore(20);
         setInvincible(true);
     }

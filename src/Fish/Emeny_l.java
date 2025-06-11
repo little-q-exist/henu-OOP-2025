@@ -7,7 +7,7 @@ public class Emeny_l extends Emeny {
 
     public Emeny_l() {
         super();
-        setSPEED(0.8f);
+        setSPEED(0.55f);
         setScore(15);
         setWIDTH(250);
         setHEIGHT(150);
