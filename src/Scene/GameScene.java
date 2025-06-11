@@ -48,14 +48,18 @@ public class GameScene extends Scene {
 
     @Override
     public void onUpdate(long deltaTime) {
-        player.onUpdate(emenies, deltaTime);
-        Iterator<Emeny> it = emenies.iterator();
+        System.err.println(emenies.size());
 
-        while (it.hasNext()) {
-            Emeny emeny = it.next();
-            emeny.onUpdate(deltaTime);
-            if (emeny.checkDelete(emeny.isFacing_right())) {
-                it.remove();
+        synchronized (emenies) {
+            player.onUpdate(emenies, deltaTime);
+            Iterator<Emeny> it = emenies.iterator();
+
+            while (it.hasNext()) {
+                Emeny emeny = it.next();
+                emeny.onUpdate(deltaTime);
+                if (emeny.checkDelete(emeny.isFacing_right())) {
+                    it.remove();
+                }
             }
         }
 
@@ -127,10 +131,10 @@ public class GameScene extends Scene {
         }
     }
 
-    private long EmenyGeneratorCount = 0;
-    private final int Emeny_sGenerateINTERVAL = 250;
-    private final int Emeny_mGenerateINTERVAL = 500;
-    private final int Emeny_lGenerateINTERVAL = 1500;
+    private long EmenyGeneratorCount = 189;
+    private final int Emeny_sGenerateINTERVAL = 25;
+    private final int Emeny_mGenerateINTERVAL = 55;
+    private final int Emeny_lGenerateINTERVAL = 100;
     private final int Emeny_bossGenerateINTERVAL = 5000;
 
     void generateNewEmenies() {
@@ -163,9 +167,6 @@ public class GameScene extends Scene {
         switch (type) {
             case small:
                 Emeny emeny_s = new Emeny_s();
-
-                System.out.println(emeny_s.getPosition());
-
                 emenies.add(emeny_s);
                 break;
             case medium:

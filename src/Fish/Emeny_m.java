@@ -9,9 +9,9 @@ public class Emeny_m extends Emeny {
         super();
         setSPEED(0.75f);
         setScore(8);
-        setWIDTH(180);
+        setWIDTH(120);
         setInvincible(false);
-        setHEIGHT(80);
+        setHEIGHT(75);
     }
 
     private IMAGE Emeny_mImage;

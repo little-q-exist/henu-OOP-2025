@@ -49,7 +49,6 @@ public abstract class Emeny {
 
     final public void onUpdate(long deltaTime) {
         move(deltaTime);
-        System.out.println(position);
         // emenies own logic
     }
 
@@ -67,9 +66,6 @@ public abstract class Emeny {
             outOfBounds_x = position.x > Game.getWindowWidth();
         } else {
             outOfBounds_x = position.x - WIDTH < 0;
-        }
-        if (outOfBounds_x) {
-            System.err.println("Out of bounds");
         }
         return outOfBounds_x;
     }
@@ -99,9 +95,6 @@ public abstract class Emeny {
     }
 
     public boolean isDead() {
-        if (isDead) {
-            System.err.println("isDead");
-        }
         return isDead;
     }
 

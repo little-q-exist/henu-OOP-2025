@@ -112,16 +112,18 @@ public class Player {
         if (position.y + PLAYER_HEIGHT > Game.getWindowHeight())
             position.y = Game.getWindowHeight() - PLAYER_HEIGHT;
 
-        for (Emeny emeny : emenies) {
-            if (emeny.checkCollide(this)) {
-                if (score < emeny.getScore() || emeny.isInvincible()) {
-                    setDead();
-                } else {
-                    score++;
-                    if (speed > MIN_SPEED) {
-                        speed -= 0.05f;
+        synchronized (emenies) {
+            for (Emeny emeny : emenies) {
+                if (emeny.checkCollide(this)) {
+                    if (score < emeny.getScore() || emeny.isInvincible()) {
+                        setDead();
+                    } else {
+                        score++;
+                        if (speed > MIN_SPEED) {
+                            speed -= 0.05f;
+                        }
+                        emeny.setDead();
                     }
-                    emeny.setDead();
                 }
             }
         }
