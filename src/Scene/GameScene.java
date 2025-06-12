@@ -1,5 +1,6 @@
 package src.Scene;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -48,7 +49,6 @@ public class GameScene extends Scene {
 
     @Override
     public void onUpdate(long deltaTime) {
-        // System.err.println(emenies.size());
 
         synchronized (emenies) {
             player.onUpdate(emenies, deltaTime);
@@ -63,7 +63,7 @@ public class GameScene extends Scene {
             }
         }
 
-        // generateNewEmenies();
+        generateNewEmenies();
 
         if (player.isDead()) {
             gameOver = true;
@@ -84,11 +84,21 @@ public class GameScene extends Scene {
                 Game.getWindowHeight(), null);
         g.drawImage(playerImage.getImage(), playerImage.getxPos(), playerImage.getyPos(), playerImage.getImgWidth(),
                 playerImage.getImgHeight(), null);
+        if (debug) {
+            g.setColor(Color.BLACK);
+            g.drawRect(playerImage.getxPos(), playerImage.getyPos(), playerImage.getImgWidth(),
+                    playerImage.getImgHeight());
+        }
         synchronized (emenies) {
             for (Emeny emeny : emenies) {
                 IMAGE emenyImage = emeny.onDraw();
                 g.drawImage(emenyImage.getImage(), emenyImage.getxPos(), emenyImage.getyPos(), emenyImage.getImgWidth(),
                         emenyImage.getImgHeight(), null);
+                if (debug) {
+                    g.setColor(Color.RED);
+                    g.drawRect(emenyImage.getxPos(), emenyImage.getyPos(), emenyImage.getImgWidth(),
+                            emenyImage.getImgHeight());
+                }
             }
         }
     }
@@ -105,11 +115,12 @@ public class GameScene extends Scene {
         switch (KeyCode) {
             case KeyEvent.VK_Q:
                 debug = !debug;
-                System.out.println("DEBUG MODE");
+                System.out.println("DEBUG MODE :" + debug);
+                player.setDebug(debug);
                 break;
             case KeyEvent.VK_SPACE:
                 pause = !pause;
-                System.out.println("PAUSED");
+                System.out.println("PAUSED :" + pause);
                 break;
             default:
                 break;
@@ -158,27 +169,29 @@ public class GameScene extends Scene {
     // 所有敌人生成共享同一个计时器，每个敌人都有自己的时间，到了时间才new，加入列表和画出图像
     void generateNewEmeny(EmenyType type) {
 
-        if (emenies.size() >= MAX_EMENIES) {
-            return;
-        }
+        synchronized (emenies) {
+            if (emenies.size() >= MAX_EMENIES) {
+                return;
+            }
 
-        switch (type) {
-            case small:
-                Emeny emeny_s = new Emeny_s();
-                emenies.add(emeny_s);
-                break;
-            case medium:
-                Emeny emeny_m = new Emeny_m();
-                emenies.add(emeny_m);
-                break;
-            case large:
-                Emeny emeny_l = new Emeny_l();
-                emenies.add(emeny_l);
-                break;
-            case boss:
-                Emeny emeny_boss = new Emeny_boss();
-                emenies.add(emeny_boss);
-                break;
+            switch (type) {
+                case small:
+                    Emeny emeny_s = new Emeny_s();
+                    emenies.add(emeny_s);
+                    break;
+                case medium:
+                    Emeny emeny_m = new Emeny_m();
+                    emenies.add(emeny_m);
+                    break;
+                case large:
+                    Emeny emeny_l = new Emeny_l();
+                    emenies.add(emeny_l);
+                    break;
+                case boss:
+                    Emeny emeny_boss = new Emeny_boss();
+                    emenies.add(emeny_boss);
+                    break;
+            }
         }
 
     }

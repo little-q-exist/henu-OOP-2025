@@ -86,7 +86,7 @@ public class Game extends JFrame implements KeyListener {
                 try {
                     Thread.sleep((1000 / FPS) - deltaTime);
                 } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt(); // »Ö¸´ÖÐ¶Ï×´Ì¬
+                    Thread.currentThread().interrupt();
                     System.err.println("Game loop interrupted: " + e.getMessage());
                     break;
                 }
