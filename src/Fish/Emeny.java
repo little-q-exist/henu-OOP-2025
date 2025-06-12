@@ -131,11 +131,18 @@ public abstract class Emeny {
     }
 
     boolean checkCollide(Player player) {
-        Point check_position = new Point(position.x + WIDTH / 2, position.y + HEIGHT / 2);
-        boolean overlap_x = check_position.x >= player.getPosition().x
-                && check_position.x <= player.getPosition().x + player.getPLAYER_WIDTH();
-        boolean overlap_y = check_position.y >= player.getPosition().y
-                && check_position.y <= player.getPosition().y + player.getPLAYER_HEIGHT();
-        return overlap_x && overlap_y;
+        int rect1X = position.x;
+        int rect1Y = position.y;
+        int rect1Width = WIDTH;
+        int rect1Height = HEIGHT;
+        int rect2X = player.getPosition().x;
+        int rect2Y = player.getPosition().y;
+        int rect2Width = player.getPLAYER_WIDTH();
+        int rect2Height = player.getPLAYER_HEIGHT();
+
+        return rect1X < rect2X + rect2Width &&
+                rect1X + rect1Width > rect2X &&
+                rect1Y < rect2Y + rect2Height &&
+                rect1Y + rect1Height > rect2Y;
     }
 }
