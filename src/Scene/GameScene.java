@@ -48,7 +48,7 @@ public class GameScene extends Scene {
 
     @Override
     public void onUpdate(long deltaTime) {
-        System.err.println(emenies.size());
+        // System.err.println(emenies.size());
 
         synchronized (emenies) {
             player.onUpdate(emenies, deltaTime);
@@ -63,9 +63,7 @@ public class GameScene extends Scene {
             }
         }
 
-        generateNewEmenies();
-
-        // generateNewEmeny(emenies, 200, new Emeny_boss());
+        // generateNewEmenies();
 
         if (player.isDead()) {
             gameOver = true;

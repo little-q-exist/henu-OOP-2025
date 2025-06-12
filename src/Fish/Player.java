@@ -9,8 +9,10 @@ import src.ResourcesManager;
 
 public class Player {
     private Point position = new Point(Game.getWindowWidth() / 2, Game.getWindowHeight() / 2);
-    private final int PLAYER_WIDTH = 50;
     private final int PLAYER_HEIGHT = 50;
+    private final double SizePercent = 163 / 133.0;
+    private final int PLAYER_WIDTH = (int) (PLAYER_HEIGHT * SizePercent);
+
     private final double MIN_SPEED = 0.5f;
     private final double MAX_SPEED = 1.1f;
     private double speed = MAX_SPEED;
@@ -130,6 +132,7 @@ public class Player {
 
         if (right_key_down == 1 || down_key_down == 1 || left_key_down == 1 || up_key_down == 1) {
             // System.out.println(position);
+            System.out.println(PLAYER_WIDTH + "+" + PLAYER_HEIGHT);
         }
     }
 
