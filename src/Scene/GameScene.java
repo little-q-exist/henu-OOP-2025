@@ -19,7 +19,7 @@ import src.Fish.Emeny_s;
 
 public class GameScene extends Scene {
 
-    private final int MAX_EMENIES = 15;
+    private final int MAX_EMENIES = 10;
 
     private SceneManager sceneManager;
     private boolean debug;
@@ -70,7 +70,7 @@ public class GameScene extends Scene {
             gameOver = true;
         }
         if (gameOver) {
-            // sceneManager.switchTo(new MenuScene(sceneManager));
+            sceneManager.switchTo(new MenuScene(sceneManager));
         }
     }
 

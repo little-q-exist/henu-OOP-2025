@@ -9,9 +9,9 @@ import src.ResourcesManager;
 
 public class Player {
     private Point position = new Point(Game.getWindowWidth() / 2, Game.getWindowHeight() / 2);
-    private final int PLAYER_HEIGHT = 50;
+    private int PLAYER_HEIGHT = 50;
     private final double SizePercent = 163 / 133.0;
-    private final int PLAYER_WIDTH = (int) (PLAYER_HEIGHT * SizePercent);
+    private int PLAYER_WIDTH = (int) (PLAYER_HEIGHT * SizePercent);
 
     private final double MIN_SPEED = 0.5f;
     private final double MAX_SPEED = 1.1f;
@@ -54,6 +54,11 @@ public class Player {
 
     public int getPLAYER_HEIGHT() {
         return PLAYER_HEIGHT;
+    }
+
+    public void setSize(int Height) {
+        PLAYER_HEIGHT = Height;
+        PLAYER_WIDTH = (int) (PLAYER_HEIGHT * SizePercent);
     }
 
     public void onKeyPressed(KeyEvent e) {
@@ -131,6 +136,11 @@ public class Player {
                         setDead();
                     } else {
                         score++;
+                        if (score >= 15) {
+                            setSize(120);
+                        } else if (score >= 8) {
+                            setSize(90);
+                        }
                         if (speed > MIN_SPEED) {
                             speed -= 0.05f;
                         }
