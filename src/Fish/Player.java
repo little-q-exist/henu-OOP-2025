@@ -28,6 +28,10 @@ public class Player {
 
     private IMAGE playerImage;
 
+    public int getScore() {
+        return score;
+    }
+
     public void setDebug(boolean debug) {
         this.debug = debug;
     }

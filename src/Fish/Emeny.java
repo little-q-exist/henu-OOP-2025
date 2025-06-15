@@ -65,7 +65,7 @@ public abstract class Emeny {
         if (facing_right) {
             outOfBounds_x = position.x > Game.getWindowWidth();
         } else {
-            outOfBounds_x = position.x - WIDTH < 0;
+            outOfBounds_x = position.x + WIDTH < 0;
         }
         return outOfBounds_x;
     }

@@ -1,6 +1,7 @@
 package src.Scene;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -101,6 +102,9 @@ public class GameScene extends Scene {
                 }
             }
         }
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.PLAIN, 16));
+        g.drawString("Score: " + player.getScore(), 100, 20);
     }
 
     @Override
