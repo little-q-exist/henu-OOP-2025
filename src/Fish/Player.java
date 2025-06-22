@@ -1,11 +1,12 @@
-package src.Fish;
+package Fish;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import src.Game;
-import src.IMAGE;
-import src.ResourcesManager;
+
+import main.Game;
+import main.IMAGE;
+import main.ResourcesManager;
 
 public class Player {
     private Point position = new Point(Game.getWindowWidth() / 2, Game.getWindowHeight() / 2);

@@ -1,4 +1,4 @@
-package src.Scene;
+package Scene;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,15 +7,15 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import src.Fish.Player;
-import src.Game;
-import src.IMAGE;
-import src.ResourcesManager;
-import src.Fish.Emeny;
-import src.Fish.Emeny_boss;
-import src.Fish.Emeny_l;
-import src.Fish.Emeny_m;
-import src.Fish.Emeny_s;
+import Fish.Player;
+import main.Game;
+import main.IMAGE;
+import main.ResourcesManager;
+import Fish.Emeny;
+import Fish.Emeny_boss;
+import Fish.Emeny_l;
+import Fish.Emeny_m;
+import Fish.Emeny_s;
 
 public class GameScene extends Scene {
 

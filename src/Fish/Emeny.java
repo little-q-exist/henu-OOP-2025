@@ -1,10 +1,10 @@
-package src.Fish;
-
-import src.Game;
-import src.IMAGE;
+package Fish;
 
 import java.awt.Point;
 import java.util.Random;
+
+import main.Game;
+import main.IMAGE;
 
 public abstract class Emeny {
     private Point position;

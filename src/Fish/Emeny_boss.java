@@ -1,7 +1,7 @@
-package src.Fish;
+package Fish;
 
-import src.IMAGE;
-import src.ResourcesManager;
+import main.IMAGE;
+import main.ResourcesManager;
 
 public class Emeny_boss extends Emeny {
 

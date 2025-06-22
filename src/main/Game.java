@@ -1,10 +1,10 @@
-package src;
+package main;
 
 import javax.swing.JFrame;
 
-import src.Scene.GameScene;
-import src.Scene.MenuScene;
-import src.Scene.SceneManager;
+import Scene.GameScene;
+import Scene.MenuScene;
+import Scene.SceneManager;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
