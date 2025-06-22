@@ -25,6 +25,7 @@ public class ResourcesManager {
     }
 
     public void loadResources() {
+        loadResource("menuBackground", "src\\res\\_background5.jpg", false);
         loadResource("backGround", "src\\res\\background.jpg", false);
         loadResource("playerLeft", "src\\res\\playerFish.png", false);
         loadResource("playerRight", "src\\res\\playerFish.png", true);

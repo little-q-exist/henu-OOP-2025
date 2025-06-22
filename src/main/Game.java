@@ -2,7 +2,6 @@ package main;
 
 import javax.swing.JFrame;
 
-import Scene.GameScene;
 import Scene.MenuScene;
 import Scene.SceneManager;
 
@@ -19,7 +18,6 @@ public class Game extends JFrame implements KeyListener {
 
     Game() {
         sceneManager = new SceneManager();
-        // sceneManager.setCurrentScene(new MenuScene(sceneManager));
     }
 
     public String gettitle() {
@@ -68,7 +66,7 @@ public class Game extends JFrame implements KeyListener {
 
         long lastTime = System.currentTimeMillis();
 
-        sceneManager.setCurrentScene(new GameScene(sceneManager));
+        sceneManager.setCurrentScene(new MenuScene(sceneManager));
 
         while (true) {
             long currentTime = System.currentTimeMillis();

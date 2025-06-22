@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 
 public class IMAGE extends JPanel {
     private BufferedImage image = null;
-    private int xPos;
-    private int yPos;
+    private int xPos = 0;
+    private int yPos = 0;
     private int imgWidth;
     private int imgHeight;
 
