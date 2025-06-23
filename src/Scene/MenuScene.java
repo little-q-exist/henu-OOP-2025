@@ -13,7 +13,7 @@ public class MenuScene extends Scene {
 
     private SceneManager sceneManager;
 
-    private IMAGE backgroundImage = ResourcesManager.getInstance().getImage("menuBackground");
+    private IMAGE backgroundImage;
 
     private int WINDOW_width = Game.getWindowWidth();
     private int WINDOW_height = Game.getWindowHeight();
@@ -24,6 +24,7 @@ public class MenuScene extends Scene {
 
     @Override
     public void onEnter() {
+        backgroundImage = ResourcesManager.getInstance().getImage("menuBackground");
     }
 
     @Override

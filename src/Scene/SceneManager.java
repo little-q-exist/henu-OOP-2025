@@ -2,14 +2,26 @@ package Scene;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class SceneManager {
     private Scene currentScene = null;
+    private JPanel currentScenePanel;
+    private final JFrame gameFrame;
+
+    public SceneManager(JFrame gameFrame) {
+        this.gameFrame = gameFrame;
+    }
 
     public void setCurrentScene(Scene scene) {
         currentScene = scene;
         currentScene.onEnter();
+
+        currentScenePanel = currentScene.getScenePanel();
+        gameFrame.add(currentScenePanel);
+        gameFrame.revalidate();
+        gameFrame.repaint();
     }
 
     public Scene getCurrentScene() {
@@ -22,6 +34,15 @@ public class SceneManager {
         }
         currentScene = scene;
         currentScene.onEnter();
+
+        if (currentScenePanel != null) {
+            gameFrame.remove(currentScenePanel);
+        }
+
+        currentScenePanel = currentScene.getScenePanel();
+        gameFrame.add(currentScenePanel);
+        gameFrame.revalidate();
+        gameFrame.repaint();
     }
 
     public void onUpdate(long deltaTime) {

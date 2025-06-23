@@ -16,6 +16,10 @@ public class ResourcesManager {
     private final Map<String, IMAGE> images = new HashMap<>();
 
     void loadResource(String key, String path, boolean flipped) {
+        if (images.containsKey(key)) {
+            return;
+        }
+
         IMAGE img = new IMAGE();
         img.loadImage(path);
         if (flipped) {
@@ -43,8 +47,22 @@ public class ResourcesManager {
         IMAGE img = images.get(key);
 
         if (img == null || img.getImage() == null) {
-            System.out.println(key + "NULL");
+            System.out.println(key + " is NULL");
         }
-        return images.get(key);
+        return img;
+    }
+
+    public void unloadImage(String key) {
+        IMAGE img = images.remove(key);
+        if (img != null) {
+            img.dispose();
+        }
+    }
+
+    public void disposeAll() {
+        for (IMAGE img : images.values()) {
+            img.dispose();
+        }
+        images.clear();
     }
 }

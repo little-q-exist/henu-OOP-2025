@@ -86,4 +86,12 @@ public class IMAGE extends JPanel {
         image = flipped;
     }
 
+    public void dispose() {
+        if (image != null) {
+            image.flush();
+            image = null;
+        }
+        removeAll();
+    }
+
 }

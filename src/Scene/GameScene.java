@@ -51,6 +51,10 @@ public class GameScene extends Scene {
     @Override
     public void onUpdate(long deltaTime) {
 
+        if (player == null) {
+            System.out.println("player is null");
+        }
+
         synchronized (emenies) {
             player.onUpdate(emenies, deltaTime);
             Iterator<Emeny> it = emenies.iterator();
