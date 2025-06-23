@@ -41,6 +41,7 @@ public class MenuScene extends Scene {
 
     @Override
     public void onExit() {
+        backgroundImage = null;
     }
 
     @Override
