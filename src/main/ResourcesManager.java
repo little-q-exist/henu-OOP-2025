@@ -15,6 +15,16 @@ public class ResourcesManager {
 
     private final Map<String, IMAGE> images = new HashMap<>();
 
+    private BackGroundMusic bgm = new BackGroundMusic();
+
+    public void loadBgm() {
+        bgm.load("src\\res\\ª º“√»Œ¿.wav");
+    }
+
+    public BackGroundMusic getBgm() {
+        return bgm;
+    }
+
     void loadResource(String key, String path, boolean flipped) {
         if (images.containsKey(key)) {
             return;

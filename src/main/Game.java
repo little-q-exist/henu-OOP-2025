@@ -16,6 +16,8 @@ public class Game extends JFrame implements KeyListener {
 
     private SceneManager sceneManager;
 
+    private BackGroundMusic bgm;
+
     Game() {
         sceneManager = new SceneManager(this);
     }
@@ -61,6 +63,10 @@ public class Game extends JFrame implements KeyListener {
 
         this.addKeyListener(this);
         this.requestFocus();
+
+        ResourcesManager.getInstance().loadBgm();
+        bgm = ResourcesManager.getInstance().getBgm();
+        bgm.loop();
 
         ResourcesManager.getInstance().loadResources();
 
