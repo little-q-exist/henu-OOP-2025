@@ -39,8 +39,8 @@ public class ResourcesManager {
         loadResource("Emeny_mRight", "src\\res\\fish2.png", true);
         loadResource("Emeny_lLeft", "src\\res\\fish3.png", false);
         loadResource("Emeny_lRight", "src\\res\\fish3.png", true);
-        loadResource("Emeny_bossLeft", "src\\res\\shark.png", false);
-        loadResource("Emeny_bossRight", "src\\res\\shark.png", true);
+        loadResource("Emeny_bossLeft", "src\\res\\shark.png", true);
+        loadResource("Emeny_bossRight", "src\\res\\shark.png", false);
     }
 
     public IMAGE getImage(String key) {

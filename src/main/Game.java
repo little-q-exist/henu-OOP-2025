@@ -74,7 +74,6 @@ public class Game extends JFrame implements KeyListener {
             lastTime = currentTime;
 
             sceneManager.onUpdate(deltaTime);
-            // System.out.println(sceneManager.getCurrentScene().toString()); // debug
 
             add(sceneManager.getScenePanel());
 

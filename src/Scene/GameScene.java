@@ -152,7 +152,7 @@ public class GameScene extends Scene {
     private final int Emeny_sGenerateINTERVAL = 25;
     private final int Emeny_mGenerateINTERVAL = 55;
     private final int Emeny_lGenerateINTERVAL = 100;
-    private final int Emeny_bossGenerateINTERVAL = 200;
+    private final int Emeny_bossGenerateINTERVAL = 700;
 
     void generateNewEmenies() {
         EmenyGeneratorCount++;
